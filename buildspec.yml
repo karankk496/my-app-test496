@@ -14,6 +14,14 @@ phases:
       - echo Building the React app...
       - npm run build
 
+  post_build:
+    commands:
+      - echo Preparing for deployment...
+      - cp package.json .next/
+      - cp package-lock.json .next/
+      - cp next.config.js .next/ 2>/dev/null || true
+      - cp -r public .next/ 2>/dev/null || true
+
 artifacts:
   files:
     - '.next/**/*'
@@ -22,5 +30,9 @@ artifacts:
     - 'package-lock.json'
     - 'next.config.js'
     - 'node_modules/**/*'
+    - 'app/**/*'
+    - 'components/**/*'
+    - 'styles/**/*'
+    - '.env*'
   base-directory: .
   discard-paths: no
