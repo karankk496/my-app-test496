@@ -5,34 +5,22 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo Installing dependencies...
       - npm install --legacy-peer-deps
-      - npm ci --legacy-peer-deps
 
   build:
     commands:
-      - echo Building the React app...
       - npm run build
-
-  post_build:
-    commands:
-      - echo Preparing for deployment...
-      - cp package.json .next/
-      - cp package-lock.json .next/
-      - cp next.config.js .next/ 2>/dev/null || true
-      - cp -r public .next/ 2>/dev/null || true
 
 artifacts:
   files:
-    - '.next/**/*'
-    - 'public/**/*'
-    - 'package.json'
-    - 'package-lock.json'
-    - 'next.config.js'
-    - 'node_modules/**/*'
-    - 'app/**/*'
-    - 'components/**/*'
-    - 'styles/**/*'
-    - '.env*'
+    - .next/**/*
+    - public/**/*
+    - app/**/*
+    - components/**/*
+    - styles/**/*
+    - package.json
+    - package-lock.json
+    - next.config.js
+    - .env*
   base-directory: .
   discard-paths: no
