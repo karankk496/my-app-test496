@@ -16,6 +16,11 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
+    - '.next/**/*'
+    - 'public/**/*'
+    - 'package.json'
+    - 'package-lock.json'
+    - 'next.config.js'
+    - 'node_modules/**/*'
   base-directory: .
   discard-paths: no
